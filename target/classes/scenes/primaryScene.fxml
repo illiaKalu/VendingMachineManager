@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Products">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </Label>
+      <Separator prefWidth="200.0" />
+      <FlowPane alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="684.0">
+         <children>
+            <TextField fx:id="product_type" prefHeight="25.0" prefWidth="259.0">
+               <FlowPane.margin>
+                  <Insets bottom="15.0" left="25.0" right="15.0" top="15.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="Add product type">
+               <FlowPane.margin>
+                  <Insets left="25.0" />
+               </FlowPane.margin>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="21.0" prefWidth="684.0">
+         <children>
+            <TextField fx:id="product_price" prefHeight="25.0" prefWidth="259.0">
+               <FlowPane.margin>
+                  <Insets bottom="15.0" left="25.0" right="15.0" top="15.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="Price">
+               <FlowPane.margin>
+                  <Insets left="25.0" />
+               </FlowPane.margin>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="21.0" prefWidth="684.0">
+         <children>
+            <TextField fx:id="product_amount" prefHeight="25.0" prefWidth="259.0">
+               <FlowPane.margin>
+                  <Insets bottom="15.0" left="25.0" right="15.0" top="15.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="Amount">
+               <FlowPane.margin>
+                  <Insets left="25.0" />
+               </FlowPane.margin>
+            </Label>
+         </children>
+      </FlowPane>
+      <Button fx:id="add_product_button" mnemonicParsing="false" text="ADD PRODUCT">
+         <VBox.margin>
+            <Insets left="500.0" />
+         </VBox.margin>
+      </Button>
+      <Label text="Money">
+         <VBox.margin>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Separator prefWidth="200.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Separator>
+      <Label text="Amount of denominations:">
+         <VBox.margin>
+            <Insets left="15.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <FlowPane prefHeight="45.0" prefWidth="684.0">
+         <children>
+            <Label text="5$:">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="denom_5" prefHeight="25.0" prefWidth="42.0">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="2$:">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="denom_2" prefHeight="25.0" prefWidth="42.0">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="1$:">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="denom_1" prefHeight="25.0" prefWidth="42.0">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="0.5$:">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="denom_05" prefHeight="25.0" prefWidth="42.0">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="0.2$:">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="denom_02" prefHeight="25.0" prefWidth="42.0">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </TextField>
+            <Label text="0.1$:">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="denom_01" prefHeight="25.0" prefWidth="42.0">
+               <FlowPane.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </FlowPane.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </FlowPane>
+      <FlowPane prefHeight="11.0" prefWidth="684.0">
+         <children>
+            <Label text="Total money amount:">
+               <FlowPane.margin>
+                  <Insets left="25.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label fx:id="total_amount" text="0$">
+               <FlowPane.margin>
+                  <Insets left="25.0" />
+               </FlowPane.margin>
+            </Label>
+         </children>
+      </FlowPane>
+      <Button fx:id="save_button" mnemonicParsing="false" text="Save">
+         <VBox.margin>
+            <Insets left="500.0" top="15.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
