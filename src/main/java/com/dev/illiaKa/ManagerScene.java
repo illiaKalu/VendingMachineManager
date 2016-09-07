@@ -77,7 +77,7 @@ public class ManagerScene extends Application{
 
         // loads scene from fxml file in resources
         FXMLLoader loader = new FXMLLoader();
-        Parent root = loader.load(getClass().getResourceAsStream(fxmlSceneMarkupFile));
+        Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlSceneMarkupFile));
 
         Scene scene = new Scene(root);
 
@@ -85,8 +85,11 @@ public class ManagerScene extends Application{
         primaryStage.setResizable(false);
         primaryStage.setTitle(PRIMARY_STAGE_TITLE);
 
-        // TODO:FIX_ME; NPE
-        //scene.getStylesheets().add(ManagerScene.class.getResource("style.css").toExternalForm());
+        /**
+         * set styles to scene
+         * @see /resources/style.css
+         */
+        scene.getStylesheets().add("style.css");
 
 
         // assign controls from layout to actual variables
