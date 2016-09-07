@@ -14,8 +14,6 @@ public class JsonCreator {
 
     public static String createJSON(ArrayList<Product> products, String[] denominations){
 
-        JSONArray productsList = new JSONArray();
-
 
         return "";
 
