@@ -1,5 +1,6 @@
 package com.dev.illiaKa;
 
+import com.dev.illiaKa.Utils.JsonCreator;
 import com.sun.xml.internal.bind.v2.TODO;
 import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.application.Application;
@@ -121,7 +122,7 @@ public class ManagerScene extends Application{
 
                 boolean isDenominationsValid = true;
 
-                if (denominations.isEmpty()) {
+                if (products.isEmpty()) {
                     // TODO: make invalid input looks normal
                     productTypeTextFiled.setText("you didn't add products :(");
                 } else {
@@ -163,8 +164,9 @@ public class ManagerScene extends Application{
         if (result.get() == ButtonType.OK){
 
             // make JSON
+            String jsonToSend = JsonCreator.createJSON( (ArrayList) products, denominationCountArray);
 
-
+            
             // Send request to GAE
 
 
@@ -173,6 +175,7 @@ public class ManagerScene extends Application{
             alert.close();
         }
     }
+
 
     private void findControls(Scene scene) {
 
