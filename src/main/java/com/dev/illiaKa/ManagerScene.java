@@ -1,5 +1,6 @@
 package com.dev.illiaKa;
 
+import com.dev.illiaKa.Utils.HTTPRequestSendJson;
 import com.dev.illiaKa.Utils.JsonCreator;
 import com.sun.xml.internal.bind.v2.TODO;
 import com.sun.xml.internal.ws.util.StringUtils;
@@ -166,7 +167,27 @@ public class ManagerScene extends Application{
             // make JSON
             String jsonToSend = JsonCreator.createJSON( (ArrayList) products, denominationCountArray);
 
-            
+            // send JSON
+            int responseCode;
+            try{
+
+                responseCode = HTTPRequestSendJson.sendPost(jsonToSend);
+
+
+                if (responseCode != 200){
+                    throw new Exception();
+                }else{
+                    // TODO: success
+                    productTypeTextFiled.setText("NICE");
+                }
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+                // TODO: Alert USER THAT PROCESS FAILED
+                productTypeTextFiled.setText("ERROR! NOT 200 !");
+            }
+
             // Send request to GAE
 
 
