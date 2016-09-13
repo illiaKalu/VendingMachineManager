@@ -2,8 +2,6 @@ package com.dev.illiaKa;
 
 import com.dev.illiaKa.Utils.HTTPRequestSendJson;
 import com.dev.illiaKa.Utils.JsonCreator;
-import com.sun.xml.internal.bind.v2.TODO;
-import com.sun.xml.internal.ws.util.StringUtils;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,13 +17,18 @@ import java.util.Optional;
 
 /**
  * Created by sonicmaster on 07.09.16.
+ * class represents Maneger behavior
+ * stores denominations and products and send it to GAE servers.
  */
 public class ManagerScene extends Application{
 
     private static final String PRIMARY_STAGE_TITLE = "Vending Machine Manager Behavior";
     private static final String DIALOG_TITLE = "Save configuration for a vending machine";
-    // TODO: create some non-stupid dialogs
+    private static final String INVALID_INPUT = "Your input is NOT correct, please follow the patterns";
     private static final String DIALOG_ARE_YOU_SURE = "Save?";
+    private static final String NO_PRODUCTS_ADDED = "You didn't add any products";
+    private static final String SUCCESSFULY_SENDED = "Configuration was successfully saved";
+    private static final String ERROR_MESSAGE = "System failure, try again";
 
     Button addProductButton;
     Button saveButton;
@@ -43,7 +46,7 @@ public class ManagerScene extends Application{
     TextField denom02TextFiled;
     TextField denom01TextFiled;
 
-    Label totalAmountLabel;
+    Label messagesLabel;
 
     // List of products, which was added by manager and need to be saved
     List<Product> products;
@@ -52,34 +55,29 @@ public class ManagerScene extends Application{
     List<TextField> denominations;
 
     // array represents denominations.
-    // TODO: make good explanation
+    // indexes are shown below
     // 5$ - 0 index
     // 2$ - 1 index
     // ...
     // 0.1$ - 5 index
     String[] denominationCountArray = new String[6];
 
-    private boolean productValid;
-
     public static void main(String[] args) {
         launch(args);
     }
 
-
     public void start(Stage primaryStage) throws Exception {
 
-        products = new ArrayList<Product>(6);
-        denominations = new ArrayList<TextField>(6);
+        products = new ArrayList<>(6);
+        denominations = new ArrayList<>(6);
 
         // primary Scene implementation
         // markup file location
         String fxmlSceneMarkupFile = "/scenes/primaryScene.fxml";
 
-
-
         // loads scene from fxml file in resources
         FXMLLoader loader = new FXMLLoader();
-        Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlSceneMarkupFile));
+        Parent root = loader.load(getClass().getResourceAsStream(fxmlSceneMarkupFile));
 
         Scene scene = new Scene(root);
 
@@ -93,11 +91,8 @@ public class ManagerScene extends Application{
          */
         scene.getStylesheets().add("style.css");
 
-
         // assign controls from layout to actual variables
         findControls(scene);
-
-
 
         addProductButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -111,8 +106,7 @@ public class ManagerScene extends Application{
                     productPriceTextFiled.setText("");
                     productAmountTextFiled.setText("");
                 }else {
-                    // TODO: make invalid input looks normal
-                    productTypeTextFiled.setText("INVALID INPUT");
+                   messagesLabel.setText(INVALID_INPUT);
                 }
 
             }
@@ -124,8 +118,7 @@ public class ManagerScene extends Application{
                 boolean isDenominationsValid = true;
 
                 if (products.isEmpty()) {
-                    // TODO: make invalid input looks normal
-                    productTypeTextFiled.setText("you didn't add products :(");
+                    messagesLabel.setText(NO_PRODUCTS_ADDED);
                 } else {
 
                     // reading denominations section
@@ -136,19 +129,13 @@ public class ManagerScene extends Application{
 
                         } else {
                             isDenominationsValid = false;
-                            // TODO: make invalid input looks normal
-                            productTypeTextFiled.setText("INVALID INPUT");
+                            messagesLabel.setText(INVALID_INPUT);
                         }
-
                     }
 
                     if (isDenominationsValid) showAlertDialog();
-
                 }
-
             }
-
-
         });
 
 
@@ -162,7 +149,11 @@ public class ManagerScene extends Application{
         alert.setHeaderText(DIALOG_ARE_YOU_SURE);
 
         Optional<ButtonType> result = alert.showAndWait();
+
         if (result.get() == ButtonType.OK){
+
+            saveButton.setDisable(true);
+            addProductButton.setDisable(true);
 
             // make JSON
             String jsonToSend = JsonCreator.createJSON( (ArrayList) products, denominationCountArray);
@@ -170,33 +161,22 @@ public class ManagerScene extends Application{
             // send JSON
             int responseCode;
             try{
-
                 responseCode = HTTPRequestSendJson.sendPost(jsonToSend);
-
 
                 if (responseCode != 200){
                     throw new Exception();
                 }else{
-                    // TODO: success
-                    productTypeTextFiled.setText("NICE");
+                    messagesLabel.setText(SUCCESSFULY_SENDED);
                 }
-
 
             }catch (Exception e){
                 e.printStackTrace();
-                // TODO: Alert USER THAT PROCESS FAILED
-                productTypeTextFiled.setText("ERROR! NOT 200 !");
+                messagesLabel.setText(ERROR_MESSAGE);
             }
-
-            // Send request to GAE
-
-
-            saveButton.setDisable(true);
         } else {
             alert.close();
         }
     }
-
 
     private void findControls(Scene scene) {
 
@@ -214,12 +194,11 @@ public class ManagerScene extends Application{
         denominations.add(denom02TextFiled = (TextField) scene.lookup("#denom_02"));
         denominations.add(denom01TextFiled = (TextField) scene.lookup("#denom_01"));
 
-        totalAmountLabel = (Label) scene.lookup("#total_amount");
+        messagesLabel = (Label) scene.lookup("#message_label");
     }
 
-
     public boolean isProductValid() {
-        return ( productTypeTextFiled.getText().length() > 0 ) && (productPriceTextFiled.getText().matches("-?\\d+(\\.\\d+)?") )
+        return ( productTypeTextFiled.getText().length() > 0 ) && (productPriceTextFiled.getText().matches("-?\\d+(\\.\\d)?") )
                 && ( productAmountTextFiled.getText().matches("-?\\d+") );
     }
 }
