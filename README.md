@@ -1,7 +1,7 @@
 # VendingMachineManager
 
-<H3> Project for configurating Vending Machine Simulator <H3>
-<H4> In this project you can set products for vending machine and denominations for machine wallet <H4> 
+<H3> Project for configurating Vending Machine Simulator </H3>
+<H4> In this project you can set products for vending machine and denominations for machine wallet </H4> 
 
 To launch the project clone it into your local repo and : <br>
 1) If you have maven installed, run <bold> jfx:jar </bold> command. ( recommended ) <br>
