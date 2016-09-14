@@ -30,29 +30,20 @@ public class ManagerScene extends Application{
     private static final String SUCCESSFULY_SENDED = "Configuration was successfully saved";
     private static final String ERROR_MESSAGE = "System failure, try again";
 
-    Button addProductButton;
-    Button saveButton;
+    private Button addProductButton;
+    private Button saveButton;
 
     // product info textfields
-    TextField productTypeTextFiled;
-    TextField productPriceTextFiled;
-    TextField productAmountTextFiled;
-
-    // denominations
-    TextField denom5TextFiled;
-    TextField denom2TextFiled;
-    TextField denom1TextFiled;
-    TextField denom05TextFiled;
-    TextField denom02TextFiled;
-    TextField denom01TextFiled;
-
-    Label messagesLabel;
+    private TextField productTypeTextFiled;
+    private TextField productPriceTextFiled;
+    private TextField productAmountTextFiled;
+    private Label messagesLabel;
 
     // List of products, which was added by manager and need to be saved
-    List<Product> products;
+    private List<Product> products;
 
     // List of denominations TextFields.
-    List<TextField> denominations;
+    private List<TextField> denominations;
 
     // array represents denominations.
     // indexes are shown below
@@ -60,7 +51,7 @@ public class ManagerScene extends Application{
     // 2$ - 1 index
     // ...
     // 0.1$ - 5 index
-    String[] denominationCountArray = new String[6];
+    private String[] denominationCountArray = new String[6];
 
     public static void main(String[] args) {
         launch(args);
@@ -138,7 +129,6 @@ public class ManagerScene extends Application{
             }
         });
 
-
         primaryStage.show();
     }
 
@@ -187,17 +177,17 @@ public class ManagerScene extends Application{
         addProductButton  =(Button) scene.lookup("#add_product_button");
         saveButton  =(Button) scene.lookup("#save_button");
 
-        denominations.add(denom5TextFiled = (TextField) scene.lookup("#denom_5"));
-        denominations.add(denom2TextFiled = (TextField) scene.lookup("#denom_2"));
-        denominations.add(denom1TextFiled = (TextField) scene.lookup("#denom_1"));
-        denominations.add(denom05TextFiled = (TextField) scene.lookup("#denom_05"));
-        denominations.add(denom02TextFiled = (TextField) scene.lookup("#denom_02"));
-        denominations.add(denom01TextFiled = (TextField) scene.lookup("#denom_01"));
+        denominations.add((TextField) scene.lookup("#denom_5"));
+        denominations.add((TextField) scene.lookup("#denom_2"));
+        denominations.add((TextField) scene.lookup("#denom_1"));
+        denominations.add((TextField) scene.lookup("#denom_05"));
+        denominations.add((TextField) scene.lookup("#denom_02"));
+        denominations.add((TextField) scene.lookup("#denom_01"));
 
         messagesLabel = (Label) scene.lookup("#message_label");
     }
 
-    public boolean isProductValid() {
+    private boolean isProductValid() {
         return ( productTypeTextFiled.getText().length() > 0 ) && (productPriceTextFiled.getText().matches("-?\\d+(\\.\\d)?") )
                 && ( productAmountTextFiled.getText().matches("-?\\d+") );
     }

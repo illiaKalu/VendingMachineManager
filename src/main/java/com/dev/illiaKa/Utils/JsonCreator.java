@@ -15,7 +15,7 @@ import static javafx.scene.input.KeyCode.T;
 public class JsonCreator {
 
 
-    public static String createJSON(ArrayList<Product> products, String[] denominations){
+    public static String createJSON(ArrayList<Product> products, String[] denominations) {
 
         String PRODUCTS = "products";
         String DENOMINATIONS = "denominations";
@@ -27,11 +27,9 @@ public class JsonCreator {
         JSONArray tempJSONArray = new JSONArray();
 
 
-        try
-        {
+        try {
 
-            for (Product product : products)
-            {
+            for (Product product : products) {
                 tempJSONObject = new JSONObject();
                 tempJSONObject.put("type", product.getType());
                 tempJSONObject.put("price", product.getPrice());
@@ -54,12 +52,9 @@ public class JsonCreator {
         }
 
 
-
-
         return productsAndDenominationsJSONObj.toString();
 
     }
-
 
 
 }

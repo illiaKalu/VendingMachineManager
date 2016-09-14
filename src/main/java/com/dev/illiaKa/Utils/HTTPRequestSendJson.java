@@ -34,11 +34,6 @@ public class HTTPRequestSendJson {
         return connection.getResponseCode();
 
 
-
-
-
-
-
     }
 
 }
