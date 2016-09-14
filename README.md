@@ -3,8 +3,8 @@
 <H3> Project for configurating Vending Machine Simulator <H3>
 <H4> In this project you can set products for vending machine and denominations for machine wallet <H4> 
 
-To launch the project clone it into your local machine and : 
-1) If you have maven installed, run <bold> jfx:jar </bold> command. ( recommended )
+To launch the project clone it into your local repo and : <br>
+1) If you have maven installed, run <bold> jfx:jar </bold> command. ( recommended ) <br>
 2) If not, you can simply compile main class <bold> ManagerScene.java </bold> with javac and run it as java application. 
 
 *WARNING  If you launching project with maven, you .jar archive will be located in target/jfx/app/ not in /target directory
