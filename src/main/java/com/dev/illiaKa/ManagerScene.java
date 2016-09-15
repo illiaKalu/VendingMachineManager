@@ -86,50 +86,43 @@ public class ManagerScene extends Application{
         // assign controls from layout to actual variables
         findControls(scene);
 
-        addProductButton.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
+        addProductButton.setOnAction(event -> {
 
-                if (isProductValid()) {
-                    products.add(new Product(productTypeTextFiled.getText(),
-                            productPriceTextFiled.getText(), productAmountTextFiled.getText()));
+            if (isProductValid()) {
+                products.add(new Product(productTypeTextFiled.getText(),
+                        productPriceTextFiled.getText(), productAmountTextFiled.getText()));
 
-                    // make fields empty
-                    productTypeTextFiled.setText("");
-                    productPriceTextFiled.setText("");
-                    productAmountTextFiled.setText("");
-                }else {
-                   messagesLabel.setText(INVALID_INPUT);
-                }
-
+                // make fields empty
+                productTypeTextFiled.setText("");
+                productPriceTextFiled.setText("");
+                productAmountTextFiled.setText("");
+            }else {
+               messagesLabel.setText(INVALID_INPUT);
             }
+
         });
 
-        Observable<ActionEvent> bttnEvents =
-                JavaFxObservable.fromActionEvents(saveButton);
+        saveButton.setOnAction(event -> {
 
-        saveButton.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
+            boolean isDenominationsValid = true;
 
-                boolean isDenominationsValid = true;
+            if (products.isEmpty()) {
+                messagesLabel.setText(NO_PRODUCTS_ADDED);
+            } else {
 
-                if (products.isEmpty()) {
-                    messagesLabel.setText(NO_PRODUCTS_ADDED);
-                } else {
+                // reading denominations section
+                for (int i = 0; i < denominations.size(); i++) {
 
-                    // reading denominations section
-                    for (int i = 0; i < denominations.size(); i++) {
+                    if (!denominations.get(i).getText().isEmpty() && denominations.get(i).getText().matches("-?\\d+")) {
+                        denominationCountArray[i] = denominations.get(i).getText();
 
-                        if (!denominations.get(i).getText().isEmpty() && denominations.get(i).getText().matches("-?\\d+")) {
-                            denominationCountArray[i] = denominations.get(i).getText();
-
-                        } else {
-                            isDenominationsValid = false;
-                            messagesLabel.setText(INVALID_INPUT);
-                        }
+                    } else {
+                        isDenominationsValid = false;
+                        messagesLabel.setText(INVALID_INPUT);
                     }
-
-                    if (isDenominationsValid) showAlertDialog();
                 }
+
+                if (isDenominationsValid) showAlertDialog();
             }
         });
 
