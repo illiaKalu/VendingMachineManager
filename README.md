@@ -7,7 +7,7 @@ To launch the project clone it into your local repo and : <br>
 1) If you have maven installed, run <strong> jfx:jar </strong> command. ( recommended ) <br>
 2) If not, you can simply compile main class  <strong> ManagerScene.java </strong> with javac and run it as java application. 
 
-*WARNING  If you launching project with maven, you .jar archive will be located in target/jfx/app/ not in /target directory
+*WARNING  If you launching project with maven, you .jar archive will be located in target/jfx/app/ not in /target directory </br>
 If you launching project manually, make sure that all libraries are downloaded and installed. List of libraries you can find in pom.xml
 
 Used Technologies: 
