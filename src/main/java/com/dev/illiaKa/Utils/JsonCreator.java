@@ -21,9 +21,7 @@ public class JsonCreator {
         String DENOMINATIONS = "denominations";
 
         JSONObject productsAndDenominationsJSONObj = new JSONObject();
-
-
-        JSONObject tempJSONObject = new JSONObject();
+        JSONObject tempJSONObject;
         JSONArray tempJSONArray = new JSONArray();
 
 
@@ -50,7 +48,6 @@ public class JsonCreator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         return productsAndDenominationsJSONObj.toString();
 

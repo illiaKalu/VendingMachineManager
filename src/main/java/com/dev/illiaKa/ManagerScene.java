@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import rx.observables.JavaFxObservable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +103,9 @@ public class ManagerScene extends Application{
 
             }
         });
+
+        Observable<ActionEvent> bttnEvents =
+                JavaFxObservable.fromActionEvents(saveButton);
 
         saveButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {

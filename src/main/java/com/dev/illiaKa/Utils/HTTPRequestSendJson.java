@@ -7,6 +7,7 @@ import java.net.URL;
 
 /**
  * Created by sonicmaster on 08.09.16.
+ * class represents HTTP connection to GAE
  */
 public class HTTPRequestSendJson {
 
